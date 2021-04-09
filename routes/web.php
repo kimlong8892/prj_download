@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'Index'])->name('home');
+
+Route::get('/get-list-video', [\App\Http\Controllers\HomeController::class, 'getListFormatVideo'])->name('ajax.get_list_format_video');
+
+Route::get('/download-video', [\App\Http\Controllers\HomeController::class, 'downloadVideo'])->name('download.video');
+
+Route::post('/', [\App\Http\Controllers\HomeController::class, 'indexPost'])->name('home.post');
