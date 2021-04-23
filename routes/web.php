@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'Index'])->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'Index'])->name('download-video-youtube');
 
 Route::get('/get-list-video', [\App\Http\Controllers\HomeController::class, 'getListFormatVideo'])->name('ajax.get_list_format_video');
 
