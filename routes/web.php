@@ -18,3 +18,20 @@ Route::get('/get-list-video', [\App\Http\Controllers\HomeController::class, 'get
 Route::get('/download-video', [\App\Http\Controllers\HomeController::class, 'downloadVideo'])->name('download.video');
 
 Route::post('/', [\App\Http\Controllers\HomeController::class, 'indexPost'])->name('home.post');
+
+
+Route::get('/view-share-video',  [\App\Http\Controllers\ViewVideoShare::class, 'Index'])->name('view-share-video');
+
+
+Route::prefix('user')->group(function () {
+    Route::post('/reg', [\App\Http\Controllers\UserController::class, 'regPost'])->name('user.reg.post');
+    Route::post('/login', [\App\Http\Controllers\UserController::class, 'loginPost'])->name('user.login.post');
+
+    Route::get('/reg', [\App\Http\Controllers\UserController::class, 'Reg'])->name('user.reg');
+    Route::get('/login', [\App\Http\Controllers\UserController::class, 'Login'])->name('user.login');
+
+    Route::get('/logout', function (){
+        Auth::logout();
+        return back();
+    })->name('user.logout');
+});

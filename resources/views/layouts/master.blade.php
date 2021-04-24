@@ -84,23 +84,32 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="dropdown user-dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Profile</a></li>
-                                        <li><a href="#">Calendar</a></li>
-                                        <li><a href="#"><span class="badge pull-right badge-danger">42</span>Messages</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Account Settings</a></li>
-                                        <li><a href="#">Log Out</a></li>
-                                    </ul>
-                                </li>
+                                @if(Auth::check())
+                                    <li class="dropdown user-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <img src="http://via.placeholder.com/36x36" alt="" class="img-circle"> {{ Auth::user()->name }}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><a href="{{ route('user.logout') }}">{{ trans('label.logout') }}</a></a></li>
+                                        </ul>
+                                    </li>
+                                @else
+                                    <li class="dropdown user-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ route('user.login') }}">{{ trans('label.login') }}</a></li>
+                                            <li><a href="{{ route('user.reg') }}">{{ trans('label.reg') }}</a></li>
+                                        </ul>
+                                    </li>
+                                @endif
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
                 </nav>
             </div><!-- /Page Header -->
-            @yield('main')
+            <div class="container-fluid">
+                @yield('main')
+            </div>
         </div>
     </div>
 

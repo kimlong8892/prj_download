@@ -13,6 +13,11 @@
                         <i class="menu-icon icon-youtube"></i><span>{{ trans('label.download_vide_youtube') }}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('view-share-video') }}">
+                        <i class="menu-icon icon-share"></i><span>{{ trans('label.view_share_video') }}</span>
+                    </a>
+                </li>
 {{--                <li>--}}
 {{--                    <a href="email.html">--}}
 {{--                        <i class="menu-icon icon-inbox"></i><span>Email</span>--}}

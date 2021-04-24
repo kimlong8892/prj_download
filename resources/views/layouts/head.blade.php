@@ -33,6 +33,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
+<script>
+    function getRoute(name) {
+        let routes = @json(app()->routes->getRoutes());
+        let returnResult = '';
+        routes.forEach(function(item) {
+            if(item.action.as == name) {
+                returnResult = @json(url('')) + '/' + item.uri;
+                return;
+            }
+        });
+        return returnResult;
+    }
+</script>
+
 <style>
     body{
         font-family: Arial, Sans;

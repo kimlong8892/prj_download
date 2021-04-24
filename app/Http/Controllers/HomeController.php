@@ -20,7 +20,7 @@ class HomeController extends Controller
             $downloadOptions = $youtube->getDownloadLinks($request->get('url'));
             return view('render.result_list_video', ['listVideo' => $downloadOptions->getAllFormats()])->render();
         } catch (YouTubeException $e) {
-            echo 'Something went wrong: ' . $e->getMessage();
+            return view('render.result_list_video', ['listVideo' => []])->render();
         }
     }
 
